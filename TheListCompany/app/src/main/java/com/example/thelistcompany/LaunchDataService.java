@@ -23,7 +23,7 @@ import Models.Launch;
 public class LaunchDataService {
     private static ArrayList<Launch> launches;
     private final Context ctx;
-    private final String LOGTAG = "DataService";
+    private static final String LOGTAG = LaunchesAdapter.class.getName();
 
     public LaunchDataService(Context context) {
         ctx = context;
