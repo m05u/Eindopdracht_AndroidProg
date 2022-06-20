@@ -32,36 +32,36 @@
         android:text="filter"
         app:layout_constraintBottom_toBottomOf="@+id/startDateEntry"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/startDateEntry"
-        app:layout_constraintTop_toTopOf="@+id/startDateEntry" />
-
-    <Button
-        android:id="@+id/startDateEntry"
-        style="?android:spinnerStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:onClick="openDatePicker"
-        android:text="MAR 01 2020"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/endDateEntry"
         app:layout_constraintStart_toEndOf="@+id/endDateEntry"
-        app:layout_constraintTop_toTopOf="@+id/endDateEntry"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/endDateEntry" />
 
     <Button
         android:id="@+id/endDateEntry"
         style="?android:spinnerStyle"
         android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="openDatePicker"
+        android:layout_marginStart="8dp"
+        android:onClick="openEndDatePicker"
         android:text="MAR 01 2020"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/startDateEntry"
+        app:layout_constraintBottom_toBottomOf="@+id/startDateEntry"
+        app:layout_constraintStart_toEndOf="@+id/startDateEntry"
+        app:layout_constraintTop_toTopOf="@+id/startDateEntry"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/startDateEntry"
+        style="?android:spinnerStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="openStartDatePicker"
+        android:text="MAR 01 2020"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/endDateEntry"
         app:layout_constraintStart_toStartOf="@+id/startDate"
         app:layout_constraintTop_toBottomOf="@+id/startDate" />
 
@@ -83,9 +83,9 @@
         android:layout_marginEnd="190dp"
         android:text="EndDate: "
         app:layout_constraintBottom_toBottomOf="@+id/startDate"
-        app:layout_constraintEnd_toEndOf="@+id/startDateEntry"
+        app:layout_constraintEnd_toEndOf="@+id/endDateEntry"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/startDateEntry"
+        app:layout_constraintStart_toStartOf="@+id/endDateEntry"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
