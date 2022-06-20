@@ -1,15 +1,14 @@
 package com.example.thelistcompany;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
@@ -35,7 +34,7 @@ public class LaunchesAdapter extends
             patchImage = (ImageView) itemView.findViewById(R.id.patch_image);
             launch_year = (TextView) itemView.findViewById(R.id.launch_year);
             launch_success = (TextView) itemView.findViewById(R.id.launch_success);
-            
+
             itemView.setOnClickListener(this);
         }
 

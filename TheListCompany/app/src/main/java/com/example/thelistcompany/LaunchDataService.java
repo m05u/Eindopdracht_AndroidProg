@@ -33,7 +33,7 @@ public class LaunchDataService {
      * makes request to SpaceX API and retrieves launch data
      */
     public void getLaunchData() {
-        String url = "https://randomuser.me/api/?inc=gender,name,nat";
+        String url = "https://api.spacexdata.com/v3/launches";
         RequestQueue requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
 
 

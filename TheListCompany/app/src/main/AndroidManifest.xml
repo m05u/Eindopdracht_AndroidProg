@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TheListCompany">
         <activity
-            android:name=".ListActivity"
+            android:name="com.example.thelistcompany.ListActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.thelistcompany.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
