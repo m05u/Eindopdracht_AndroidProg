@@ -17,13 +17,14 @@ import java.util.List;
 import Models.Launch;
 
 public class LaunchesAdapter extends
-        RecyclerView.Adapter<LaunchesAdapter.LaunchesViewHolder>  {
+        RecyclerView.Adapter<LaunchesAdapter.LaunchesViewHolder> {
     private static final String LOGTAG = LaunchesAdapter.class.getName();
     private List<Launch> launches;
     private OnItemClickListener clickListener;
     private LayoutInflater inflater;
 
     public class LaunchesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView mission_name;
         public ImageView patchImage;
         public TextView launch_year;
         public TextView launch_success;
@@ -34,6 +35,7 @@ public class LaunchesAdapter extends
             patchImage = (ImageView) itemView.findViewById(R.id.patch_image);
             launch_year = (TextView) itemView.findViewById(R.id.launch_year);
             launch_success = (TextView) itemView.findViewById(R.id.launch_success);
+            mission_name = (TextView) itemView.findViewById(R.id.mission_name);
 
             itemView.setOnClickListener(this);
         }
@@ -52,10 +54,11 @@ public class LaunchesAdapter extends
     }
 
     public LaunchesAdapter(Context context, List<Launch> launches, OnItemClickListener listener) {
-        inflater =LayoutInflater.from(context);
+        inflater = LayoutInflater.from(context);
         this.launches = launches;
         clickListener = listener;
     }
+
     @Override
     public LaunchesViewHolder onCreateViewHolder(ViewGroup parent, int i) {
         Log.d(LOGTAG, "onCreateViewHolder() called");
@@ -77,6 +80,7 @@ public class LaunchesAdapter extends
                 .into(holder.patchImage);
         holder.launch_year.setText(launch.launch_year);
         holder.launch_success.setText(String.valueOf(launch.launch_success));
+        holder.mission_name.setText(launch.mission_name);
     }
 
 
