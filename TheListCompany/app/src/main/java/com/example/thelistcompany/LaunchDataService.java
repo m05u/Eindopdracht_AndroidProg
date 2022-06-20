@@ -2,14 +2,12 @@ package com.example.thelistcompany;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -24,6 +22,7 @@ public class LaunchDataService {
     private static ArrayList<Launch> launches;
     private final Context ctx;
     private static final String LOGTAG = LaunchesAdapter.class.getName();
+    private String responseData;
 
     public LaunchDataService(Context context) {
         ctx = context;
@@ -33,8 +32,17 @@ public class LaunchDataService {
      * makes request to SpaceX API and retrieves launch data
      */
     public void getLaunchData() {
-        String url = "https://api.spacexdata.com/v3/launches";
-        RequestQueue requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
+        if (responseData != null) {
+            launches = (ArrayList<Launch>) parseJSON(responseData);
+        } else {
+            launches = (ArrayList<Launch>) parseJSON(sendRequest());
+        }
+
+    }
+
+    public String sendRequest() {
+        String url = "https://api.spacexdata.com/v3/launches?order=desc";
+//        RequestQueue requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
 
 
         StringRequest request = new StringRequest(Request.Method.GET,
@@ -42,8 +50,12 @@ public class LaunchDataService {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        launches = (ArrayList<Launch>) parseJSON(response);
-                        Log.d("POG", "Launch data retrieved");
+                        if (response == null) {
+                            Toast.makeText(getCtx(), "Error to read launch information", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        responseData = response;
+                        Log.d(LOGTAG, "Launch data retrieved");
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -53,10 +65,12 @@ public class LaunchDataService {
             }
         });
         MySingleton.getInstance(ctx).addToRequestQueue(request);
+        return responseData;
     }
 
     /**
      * parses JSON data to model objects
+     *
      * @param response : launch data as JSON string
      * @return list of launch data
      */

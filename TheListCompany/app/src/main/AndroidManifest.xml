@@ -13,7 +13,8 @@
         android:theme="@style/Theme.TheListCompany">
         <activity
             android:name="com.example.thelistcompany.ListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.example.thelistcompany.MainActivity"
             android:exported="true">
@@ -24,5 +25,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>
